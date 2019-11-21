@@ -40,6 +40,20 @@ module.exports = appInfo => {
     // load into agent, default is close
     agent: false,
   };
+  config.security = {
+    // 是否防御csrf攻击
+    csrf: { enable: false },
+    // 域白名单
+    domainWhiteList: [ '*' ],
+  };
+  config.cors = {
+    // 只允许http://localhost:3000访问
+    origin: 'http://localhost:3000',
+    // 开启认证
+    credentials: true,
+    // 允许的请求方式
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',                                                  
+  };
 
   return {
     ...config,

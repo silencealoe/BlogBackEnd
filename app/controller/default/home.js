@@ -25,14 +25,14 @@ class HomeController extends Controller {
   async getArticalById() {
     // 接收前端传过来的值
     const id = this.ctx.params.id;
-    const sql =  'SELECT artical.Id as Id,' +
+    const sql = 'SELECT artical.Id as Id,' +
     'artical.title as title,' +
     'artical.introduce as introduce,' +
     'artical.content as content,' +
     "FROM_UNIXTIME(artical.add_time,'%Y-%m-%d %H:%i:%s' ) as add_time," +
     'artical.view_count as viewcount ,' +
-    'type.typeName as typeName ,' +
-    'type.id as typeId ' +
+    'blogtype.typeName as typeName ,' +
+    'blogtype.id as typeId ' +
     'FROM artical LEFT JOIN blogtype ON artical.type_id = blogtype.Id ' +
     'WHERE artical.id=' + id;
     const result = await this.app.mysql.query(sql);
