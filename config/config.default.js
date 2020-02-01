@@ -31,7 +31,7 @@ module.exports = appInfo => {
       // username
       user: 'root',
       // password
-      password: '123456',
+      password: 'root',
       // database
       database: 'blogdata',
     },
