@@ -24,5 +24,24 @@ class  AdminMain extends Controller{
         const typeInfo = await this.app.mysql.select('blogtype')
         this.ctx.body = {data: typeInfo}
     }
+    async addArticle(){
+        const addData = this.ctx.request.body
+        const result = await this.app.mysql.insert('artical', addData)
+        const insertSuccess = result.affectedRows === 1
+        const insertId = result.insertId
+        this.ctx.body={
+            isSuccess: insertSuccess,
+            articleId: insertId
+        }
+    }
+    async updateArticle(){
+        const addData = this.ctx.request.body
+        const result = await this.app.mysql.update('artical', addData)
+        const updateSuccess = result.affectedRows === 1
+        // const insertId = result.insertId
+        this.ctx.body={
+            isSuccess: updateSuccess
+        }
+    }
 }
 module.exports = AdminMain
